@@ -1,0 +1,171 @@
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://files.catbox.moe/mdv10z.jpeg" alt="Gamer Central Logo">
+      <h2 style="color:#ff1631">Gamer Central</h2>
+    </div>
+
+    <nav>
+      <button class="nav-button" onclick="showPage('home-page')">Home</button>
+      <button class="nav-button" onclick="showPage('merch-page')">Merch</button>
+      <button class="nav-button" onclick="showPage('recommended-page')">Recommended</button>
+      <button class="nav-button" onclick="showPage('cart-section')">Cart</button>
+    </nav>
+  </header>
+
+  <!-- HOME -->
+  <section id="home-page" class="page">
+    <h2>Welcome to Gamer Central!</h2>
+
+    <div class="content-box">
+      <h3>Our History</h3>
+      <p>
+        In 2015, a guy named Rehman Faisal had an awesome idea! He looked at his two favorite things in the whole world—video games and cool clothes—and thought, "Hey, what if I smash these together to bring gamers everywhere into one big, friendly team?"
+        And just like that, Gamer Central was born!
+        <br>
+        It started out as a neat website, but it quickly grew into something way bigger. Rehman didn't just want to sell shirts and hats; he wanted to build the ultimate hangout spot.
+        <br>
+        Today, it’s a massive, happy community where people from all over the world can connect, share their highest scores, and wear awesome gear that shows off their love for gaming.
+        <br>
+        It proves that video games aren't just for playing by yourself in your room—they are the perfect way to make brand-new best friends!
+      </p>
+
+      <h3>Why We Do It</h3>
+      <p>
+        We do this because we believe video games are way more fun when you play together! Sometimes, people think gaming is just about sitting by yourself staring at a screen. But we know the truth: video games are like a bridge that can connect anyone, anywhere!
+        <br>
+        No matter what games you like to play, what high scores you get, or where you live, you have a place on our team.
+        <br>
+        We think clothing is like a real-life avatar skin! Our cool clothes let you show the whole world what you love without saying a single word.
+      </p>
+    </div>
+
+    <h3>Explore Gamer Central</h3>
+    <p>Browse our full merchandise collection or explore our recommended items.</p>
+
+    <button class="action-button" onclick="showPage('merch-page')">
+      Browse All Merch
+    </button>
+
+    <button class="action-button" onclick="showPage('recommended-page')">
+      See Recommended Merch
+    </button>
+  </section>
+
+  <!-- ALL MERCH -->
+  <section id="merch-page" class="page hidden">
+    <h2>All Merch</h2>
+    <p>Browse every Gamer Central product in one place!</p>
+    <div id="merch-grid" class="grid"></div>
+  </section>
+
+  <!-- RECOMMENDED -->
+  <section id="recommended-page" class="page hidden">
+    <h2>⭐ Recommended for You</h2>
+    <p>Check out these recommended gaming products!</p>
+    <div id="recommended-grid" class="grid"></div>
+  </section>
+
+  <!-- CART -->
+  <section id="cart-section" class="page hidden">
+    <h2>Your Shopping Cart</h2>
+
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cart-rows"></tbody>
+      </table>
+    </div>
+
+    <div style="text-align:right;margin-top:20px">
+      <h3 style="color:#ee5a24">
+        Total:
+        <span id="cart-grand-total">$0.00</span>
+      </h3>
+
+      <button class="action-button" onclick="clearCart()" style="background:#ea2027">
+        Clear Cart
+      </button>
+
+      <button class="action-button" onclick="openCheckout()">
+        Proceed to Checkout
+      </button>
+    </div>
+
+    <section id="checkout-page" class="hidden" style="margin-top:40px">
+      <h2>Checkout</h2>
+      <p>Complete your information to place your demo order.</p>
+
+      <form id="checkout-form">
+        <div class="checkout-grid">
+          <div class="checkout-box">
+            <h3>Shipping Information</h3>
+
+            <label for="customer-name">Full Name</label>
+            <input id="customer-name" name="name" autocomplete="name" required>
+
+            <label for="customer-email">Email Address</label>
+            <input id="customer-email" name="email" type="email" autocomplete="email" required>
+
+            <label for="customer-address">Shipping Address</label>
+            <textarea id="customer-address" name="address" autocomplete="street-address" rows="3" required></textarea>
+
+            <label for="customer-city">City</label>
+            <input id="customer-city" name="city" autocomplete="address-level2" required>
+
+            <label for="customer-zip">ZIP / Postal Code</label>
+            <input id="customer-zip" name="zip" autocomplete="postal-code" required>
+          </div>
+
+          <div class="checkout-box">
+            <h3>Your Order</h3>
+            <div id="checkout-items">Your cart is empty.</div>
+
+            <hr>
+            <h3>Order Total: <span id="checkout-total">$0.00</span></h3>
+
+            <h3>Payment Method</h3>
+
+            <label>
+              <input type="radio" name="payment" value="Cash on delivery" required>
+              Cash on delivery
+            </label>
+
+            <p style="color:#666;font-size:13px">
+              Demo option only. No real payment will be collected.
+            </p>
+
+            <label>
+              <input type="radio" name="payment" value="Demo checkout">
+              Demo checkout
+            </label>
+
+            <p style="color:#666;font-size:13px">
+              Test the order process without entering payment details.
+            </p>
+
+            <button type="submit" class="action-button">Place Order</button>
+            <button type="button" class="action-button" onclick="closeCheckout()">Back to Store</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="order-confirmation" class="content-box hidden" style="margin-top:20px">
+        <h3>Thank you for shopping at Gamer Central!</h3>
+        <p id="confirmation-message"></p>
+        <button class="action-button" onclick="continueShopping()">
+          Continue Shopping
+        </button>
+      </div>
+    </section>
+  </section>
